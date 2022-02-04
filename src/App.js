@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import para from './data'
 
 function App() {
+
+  const [count, setCount] = useState(0);
+  const [Text, setText] = useState([]);
+
+  const handleSubmit =(e) =>{
+    e.preventDefault();
+
+    let amount = parseInt(count);
+
+    if(amount<=0){
+      amount=1
+    }if(amount>8){
+      amount=8;
+    }
+
+    setText(para.slice(0,amount));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className='section-center'>
+        <h3>Hello want some new paragraphs other then lorem-ipsum?</h3>
+        <form className='lorem-form' onSubmit={handleSubmit}>
+          <label htmlFor='amount'>Paragraphs: </label>
+          <input type='number' name='counting' id='counting' value={count} onChange={(e)=> setCount(e.target.value)}/>
+          <button className='btn' type='submit'>Generate</button>
+        </form>
+        <article>
+          {Text.map((item, index)=>{
+            return <p key={index}>{item}</p>
+          })}
+        </article>
+      </section>
     </div>
   );
 }
