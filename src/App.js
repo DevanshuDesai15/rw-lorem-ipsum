@@ -23,11 +23,12 @@ function App() {
   return (
     <div className="App">
       <section className='section-center'>
-        <h3>Hello want some new paragraphs other then lorem-ipsum?</h3>
+        <h3>Want some new paragraphs other then lorem-ipsum?</h3>
+        <h5>** There are total of 8 paragraphs and you can select from those paragraphs... **</h5>
         <form className='lorem-form' onSubmit={handleSubmit}>
           <label htmlFor='amount'>Paragraphs: </label>
           <input type='number' name='counting' id='counting' value={count} onChange={(e)=> setCount(e.target.value)}/>
-          <button className='btn' type='submit'>Generate</button>
+          <button className='btn' type='submit'>Generator</button>
         </form>
         <article>
           {Text.map((item, index)=>{
